@@ -13,14 +13,14 @@ class RoleSeeders extends Seeder
     public function run(): void
     {
         $roles = [
-            'admin',
-            'goverment',
+            ['name' => 'admin'],
+            ['name' => 'goverment'],
         ];
 
-        foreach ($roles as $role) {
-            Roles::create([
-                'name' => $role,
-            ]);
+        foreach ($roles as $roleData) {
+            Roles::firstOrCreate(
+                ['name' => $roleData['name']]
+            );
         }
     }
 }

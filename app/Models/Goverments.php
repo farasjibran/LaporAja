@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Complaints;
 
 class Goverments extends Model
 {
@@ -25,6 +26,6 @@ class Goverments extends Model
      */
     public function complaints()
     {
-        return $this->hasMany(Complaint::class);
+        return $this->hasMany(Complaints::class);
     }
 }
