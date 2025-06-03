@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 enum ComplaintCategory: string
 {
     case PRODUK_BARANG = 'produk_barang';
@@ -21,10 +20,20 @@ enum ComplaintCategory: string
 
 class Complaints extends Model
 {
-    protected $fillable = ['goverment_id', 'complaint_type', 'description', 'status', 'attachment'];
+    protected $fillable = [
+        'title_complaint',
+        'goverment_id',
+        'incident_date',
+        'incident_location',
+        'complaint_type',
+        'description',
+        'status',
+        'attachment',
+        'unique_code'
+    ];
 
     public function goverment()
     {
-        return $this->belongsTo(Goverments::class);
+        return $this->belongsTo(Goverments::class, 'goverment_id');
     }
 }

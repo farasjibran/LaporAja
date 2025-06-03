@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
+            $table->string('title_complaint');
             $table->foreignId('goverment_id')->constrained('goverments')->onDelete('cascade');
-            $table->string('unique_code')->nullable();
+            $table->string('unique_code');
             $table->string('complaint_type');
             $table->text('description');
+            $table->date('incident_date');
+            $table->string('incident_location');
             $table->enum('status', ['open', 'closed', 'in_progress'])->default('open');
-            $table->string('attachment')->nullable();
+            $table->string('attachment');
             $table->unique('unique_code');
             $table->timestamps();
         });
