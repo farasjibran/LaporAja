@@ -17,7 +17,13 @@
                     <h4 class="mb-9 text-lg font-semibold text-inherit">Link Cepat</h4>
                     <ul>
                         <li>
-                            <a href="." class="mb-3 inline-block text-body-dark-11 hover:text-primary">Home</a>
+                            <a href="{{ route('home.index') }}"
+                                class="mb-3 inline-block text-body-dark-11 hover:text-primary">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('tracking.index') }}"
+                                class="mb-3 inline-block text-body-dark-11 hover:text-primary">Tracking
+                                Laporan</a>
                         </li>
                         <li>
                             <a href="." class="mb-3 inline-block text-body-dark-11 hover:text-primary">Tentang
