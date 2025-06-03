@@ -10,3 +10,4 @@ Route::post('/complaints', [HomeController::class, 'store'])->name('complaints.s
 
 // Tracking Controller
 Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking.index');
+Route::get('/tracking/track', [TrackingController::class, 'track'])->name('tracking.track');

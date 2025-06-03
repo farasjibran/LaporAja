@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complaints;
 use Illuminate\Http\Request;
 
 class TrackingController extends Controller
@@ -12,6 +13,28 @@ class TrackingController extends Controller
     public function index()
     {
         return view('tracking');
+    }
+
+    /**
+     * Track a report by its reference number
+     */
+    public function track(Request $request)
+    {
+        $referenceNumber = $request->input('tracking_code');
+
+        $complaint = Complaints::where('unique_code', $referenceNumber)->first();
+
+        if (!$complaint) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Complaints not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $complaint
+        ]);
     }
 
     /**

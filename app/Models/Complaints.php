@@ -29,7 +29,9 @@ class Complaints extends Model
         'description',
         'status',
         'attachment',
-        'unique_code'
+        'unique_code',
+        'complaint_response',
+        'supporting_documents_response'
     ];
 
     public function goverment()

@@ -20,9 +20,11 @@ return new class extends Migration
             $table->text('description');
             $table->date('incident_date');
             $table->string('incident_location');
-            $table->enum('status', ['open', 'closed', 'in_progress'])->default('open');
+            $table->enum('status', ['open', 'closed', 'in_progress', 'rejected'])->default('open');
             $table->string('attachment');
             $table->unique('unique_code');
+            $table->text('complaint_response')->nullable();
+            $table->string('supporting_documents_response')->nullable();
             $table->timestamps();
         });
     }

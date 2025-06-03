@@ -121,8 +121,21 @@
                                         @endif
                                     </div>
 
-                                    <button class="!btn !btn-error !mt-5 !text-white !outline-0" type="submit"
-                                        id="submitBtn">Lapor</button>
+                                    <button class="!btn !btn-error !mt-5 !text-white !outline-0 !bg-red-500" type="submit"
+                                        id="submitBtn">
+                                        <span id="buttonText">Lapor</span>
+                                        <span id="loadingSpinner" class="hidden">
+                                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10"
+                                                    stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor"
+                                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                                </path>
+                                            </svg>
+                                            Mengirim...
+                                        </span>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -281,6 +294,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('form');
             const submitBtn = document.getElementById('submitBtn');
+            const buttonText = document.getElementById('buttonText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
 
             // Function to show error message
             function showError(message, errors = null) {
@@ -341,9 +356,10 @@
                     return;
                 }
 
-                // Disable submit button
+                // Disable submit button and show loading state
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = 'Mengirim...';
+                buttonText.classList.add('hidden');
+                loadingSpinner.classList.remove('hidden');
 
                 try {
                     // Get Cloudflare Turnstile response
@@ -468,9 +484,10 @@
                         showError(error.message);
                     }
                 } finally {
-                    // Re-enable submit button
+                    // Re-enable submit button and hide loading state
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Lapor';
+                    buttonText.classList.remove('hidden');
+                    loadingSpinner.classList.add('hidden');
                 }
             });
         });
