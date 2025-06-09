@@ -94,7 +94,7 @@
                                             <option value="fasilitas_sarana">Fasilitas Sarana</option>
                                             <option value="keamanan_privasi">Keamanan Privasi</option>
                                             <option value="informasi_misleading">Informasi Misleading</option>
-                                            <option value="lain-lain">Lain-Lain</option>
+                                            <option value="lain_lain">Lain-Lain</option>
                                         </select>
                                     </fieldset>
 

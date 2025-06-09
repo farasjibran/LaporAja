@@ -53,7 +53,7 @@ class HomeController extends Controller
             $trackingCode = 'LAPOR-' . strtoupper(substr(md5(uniqid()), 0, 8));
 
             // Handle file upload
-            $filePath = $request->file('file_attachment')->store('complaints');
+            $filePath = $request->file('file_attachment')->store('complaints', 'public');
 
             // Create complaint record
             $complaint = Complaints::create([

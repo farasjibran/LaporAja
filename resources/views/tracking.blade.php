@@ -217,27 +217,29 @@
                         switch (data.status) {
                             case 'open':
                                 document.getElementById('reportStatus').innerHTML =
-                                    `<div class="badge badge-soft badge-${getStatusBadgeClass(data.status)}">Pending</div>`;
+                                    `<div class="badge badge-soft badge-warning">Pending</div>`;
                                 break;
 
                             case 'in_progress':
                                 document.getElementById('reportStatus').innerHTML =
-                                    `<div class="badge badge-soft badge-${getStatusBadgeClass(data.status)}">In Progress</div>`;
+                                    `<div class="badge badge-soft badge-info">In Progress</div>`;
                                 break;
 
                             case 'closed':
                                 document.getElementById('reportStatus').innerHTML =
-                                    `<div class="badge badge-soft badge-${getStatusBadgeClass(data.status)}">Closed</div>`;
+                                    `<div class="badge badge-soft badge-success">Closed</div>`;
                                 break;
 
                             case 'rejected':
                                 document.getElementById('reportStatus').innerHTML =
-                                    `<div class="badge badge-soft badge-${getStatusBadgeClass(data.status)}">Rejected</div>`;
+                                    `<div class="badge badge-soft badge-error">Rejected</div>`;
                                 break;
                         }
 
-                        document.getElementById('reportFile').textContent = data.file || '-';
-                        document.getElementById('reportResponse').textContent = data.response || '-';
+                        document.getElementById('reportFile').innerHTML = data.file_response ?
+                            `<a href="${data.file_response}" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">View File</a>` :
+                            '-';
+                        document.getElementById('reportResponse').textContent = data.complaint_response || '-';
 
                         // Show result section
                         document.getElementById('resultSection').style.display = 'block';

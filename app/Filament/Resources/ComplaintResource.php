@@ -3,15 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ComplaintResource\Pages;
-use App\Filament\Resources\ComplaintResource\RelationManagers;
 use App\Models\Complaints;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Model;
 
 class ComplaintResource extends Resource
 {
@@ -36,13 +34,33 @@ class ComplaintResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title_complaint')->label('Title'),
+                TextColumn::make('unique_code')->label('Nomor Laporan'),
+                TextColumn::make('status')->badge()
+                    ->colors([
+                        'info' => 'open',
+                        'warning' => 'in_progress',
+                        'success' => 'closed',
+                        'danger' => 'rejected',
+                    ])
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                        'open' => __('Open'),
+                        'in_progress' => __('In Progress'),
+                        'closed' => __('Closed'),
+                        'rejected' => __('Rejected'),
+                        default => $state,
+                    }),
+                TextColumn::make('created_at')->dateTime('d-m-Y')->label('Created At'),
             ])
+            ->searchable()
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('handle')
+                    ->label('View & Handle')
+                    ->icon('heroicon-o-pencil-square')
+                    ->url(fn(Model $record): string => static::getUrl('handle', ['record' => $record->getKey()])),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -62,7 +80,7 @@ class ComplaintResource extends Resource
     {
         return [
             'index' => Pages\ListComplaints::route('/'),
-            'edit' => Pages\EditComplaint::route('/{record}/edit'),
+            'handle' => Pages\HandleComplaint::route('/{record}/handle'),
         ];
     }
 }

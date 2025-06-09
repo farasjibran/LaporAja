@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Complaints;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TrackingController extends Controller
 {
@@ -31,9 +32,17 @@ class TrackingController extends Controller
             ], 404);
         }
 
+        $data = $complaint->toArray();
+        $data['file_response'] = $complaint->supporting_documents_response
+            ? Storage::temporaryUrl(
+                $complaint->supporting_documents_response,
+                now()->addMinutes(5)
+            )
+            : null;
+
         return response()->json([
             'status' => 'success',
-            'data' => $complaint
+            'data' => $data,
         ]);
     }
 
