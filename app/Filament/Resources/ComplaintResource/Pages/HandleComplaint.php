@@ -32,6 +32,8 @@ class HandleComplaint extends Page implements HasForms
         $this->record = $record;
         $this->form->fill([
             'status' => $this->record->status,
+            'response_message' => $this->record->complaint_response,
+            'response_attachment' => $this->record->supporting_documents_response
         ]);
     }
 
