@@ -33,7 +33,7 @@
                                     class="ic-page-scroll mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70 {{ request()->is('tracking') ? 'active' : '' }}"
                                     role="menuitem">Tracking Laporan</a>
                             </li>
-                            <li class="group relative">
+                            {{-- <li class="group relative">
                                 <a href=""
                                     class="ic-page-scroll mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
                                     role="menuitem">Tentang LaporSaja</a>
@@ -42,7 +42,7 @@
                                 <a href=""
                                     class="ic-page-scroll mx-8 flex py-2 text-base font-medium text-body-light-12 group-hover:text-primary dark:text-body-dark-12 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-primary-color lg:dark:text-primary-color lg:group-hover:text-primary-color lg:group-hover:opacity-70"
                                     role="menuitem">FAQ</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>

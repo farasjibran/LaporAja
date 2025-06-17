@@ -4,7 +4,7 @@
 
 @section('content')
     {{-- Header --}}
-    <section class="relative overflow-hidden text-primary-color pt-[120px] md:pt-[130px] lg:pt-[160px] !pb-[60px]">
+    <section class="relative overflow-hidden text-primary-color pt-[120px] md:pt-[130px] lg:pt-[160px] !pb-[160px]">
         <div class="mx-auto max-w-[780px] text-center">
             <h1 class="!text-4xl mb-4">Cek Status Pengaduan</h1>
             <p class="text-gray-600 !text-lg">

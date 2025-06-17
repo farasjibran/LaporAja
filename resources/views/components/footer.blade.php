@@ -25,13 +25,13 @@
                                 class="mb-3 inline-block text-body-dark-11 hover:text-primary">Tracking
                                 Laporan</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="." class="mb-3 inline-block text-body-dark-11 hover:text-primary">Tentang
                                 LaporSaja</a>
                         </li>
                         <li>
                             <a href="." class="mb-3 inline-block text-body-dark-11 hover:text-primary">FAQ</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
